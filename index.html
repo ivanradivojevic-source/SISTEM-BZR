@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RB Team - Bezbednost i zdravlje na radu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="RB Team Logo" class="logo" id="logo">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" data-key="nav.home">Početna</a></li>
+                <li><a href="#about" data-key="nav.about">O nama</a></li>
+                <li><a href="#career" data-key="nav.career">Karijera</a></li>
+                <li><a href="#contact" data-key="nav.contact">Kontakt</a></li>
+                <li><a href="#news" data-key="nav.news">Vesti</a></li>
+            </ul>
+            <div class="language-switcher">
+                <button class="lang-btn active" id="langSr" data-lang="sr">SR</button>
+                <button class="lang-btn" id="langEn" data-lang="en">EN</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-key="hero.title">RB Team</h1>
+            <p class="subtitle" data-key="hero.subtitle">Bezbednost i zdravlje na radu</p>
+            <p class="description" data-key="hero.description">Vaš pouzdan partner za bezbednost i zdravlje na radnom mestu</p>
+        </div>
+    </section>
+
+    <!-- Company Introduction -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <p class="intro-text" data-key="intro.text1">Privredno društvo "RAŠA-BONAMIVA" DOO je brzorastuća kompanija u segmentu pružanja usluga iz oblasti bezbednosti i zdravlja na radu.</p>
+                <p class="intro-text" data-key="intro.text2">Osnovana je 2008. godine u Smederevu i već deset godina sa uspehom pruža usluge brojnim korisnicima na teritoriji Braničevskog i Podunavskog okruga, Beograda, Novog Sada, Srema, Banata.</p>
+                <p class="intro-text" data-key="intro.text3">"RAŠA-BONAMIVA" DOO bazira svoju ponudu na najsavremenijim trendovima zaštite na radu, na najnovijim zakonskim i podzakonskim rešenjima imajući u vidu potrebe korisnika usluga.</p>
+                <p class="intro-text" data-key="intro.text4">Tim naših stručnjaka specijalizovanih za bezbednost i zdravlje na radu svakodnevno unapređuje svoja znanja i veštine, omogućujući našim klijentima i njihovim zaposlenima visok nivo zaštite na radu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 data-key="about.title">O nama</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3 data-key="about.mission.title">Naša misija</h3>
+                    <p data-key="about.mission.text">Posvećeni smo pružanju vrhunskih usluga u oblasti bezbednosti i zdravlja na radu, osiguravajući da svaki radnik ima sigurno i zdravo radno okruženje.</p>
+                </div>
+                <div class="content-card">
+                    <h3 data-key="about.vision.title">Naša vizija</h3>
+                    <p data-key="about.vision.text">Biti lider u industriji bezbednosti na radu, postavljajući najviše standarde i pružajući inovativna rešenja za zaštitu radnika.</p>
+                </div>
+                <div class="content-card">
+                    <h3 data-key="about.values.title">Naše vrednosti</h3>
+                    <p data-key="about.values.text">Bezbednost, profesionalizam, integritet i posvećenost našim klijentima su temelji naše kompanije.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Section -->
+    <section id="career" class="section section-alt">
+        <div class="container">
+            <h2 data-key="career.title">Karijera</h2>
+            <p class="section-intro" data-key="career.intro">Pridružite se našem timu profesionalaca koji rade na stvaranju sigurnijeg radnog okruženja.</p>
+            <div class="career-info">
+                <p data-key="career.description">Trenutno tražimo motivisane i posvećene profesionalce koji dele našu strast prema bezbednosti na radu. Ako ste zainteresovani, pošaljite nam svoj CV.</p>
+                <a href="#contact" class="btn-primary" data-key="career.cta">Kontaktirajte nas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 data-key="contact.title">Kontakt</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3 data-key="contact.address.title">Adresa</h3>
+                        <p data-key="contact.address.text">Ulica i broj, Grad, Srbija</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3 data-key="contact.phone.title">Telefon</h3>
+                        <p>+381 XX XXX XXXX</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3 data-key="contact.email.title">Email</h3>
+                        <p>info@rbteam.rs</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Ime" data-key="form.name" data-placeholder="form.name" required>
+                    <input type="email" placeholder="Email" data-key="form.email" data-placeholder="form.email" required>
+                    <textarea placeholder="Poruka" data-key="form.message" data-placeholder="form.message" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary" data-key="form.submit">Pošalji</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section section-alt">
+        <div class="container">
+            <h2 data-key="news.title">Vesti</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-date" data-key="news.date.format">DD. MM. YYYY</div>
+                    <h3 data-key="news.item1.title">Najnovije vesti o bezbednosti na radu</h3>
+                    <p data-key="news.item1.text">Pratite najnovije trendove i promene u oblasti bezbednosti i zdravlja na radu.</p>
+                </article>
+                <article class="news-card">
+                    <div class="news-date" data-key="news.date.format">DD. MM. YYYY</div>
+                    <h3 data-key="news.item2.title">Nova obuka za radnike</h3>
+                    <p data-key="news.item2.text">Organizujemo nove programe obuke za poboljšanje bezbednosti na radnom mestu.</p>
+                </article>
+                <article class="news-card">
+                    <div class="news-date" data-key="news.date.format">DD. MM. YYYY</div>
+                    <h3 data-key="news.item3.title">Partnerstvo sa vodećim kompanijama</h3>
+                    <p data-key="news.item3.text">Radimo sa vodećim kompanijama na implementaciji najboljih praksi bezbednosti.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-key="footer.text">&copy; 2024 RB Team. Sva prava zadržana.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
