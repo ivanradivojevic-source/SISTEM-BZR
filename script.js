@@ -6,7 +6,7 @@ const translations = {
         'nav.career': 'Karijera',
         'nav.contact': 'Kontakt',
         'nav.news': 'Vesti',
-        'hero.title': 'RB Team',
+        'hero.title': 'SISTEM-BZR',
         'hero.subtitle': 'Bezbednost i zdravlje na radu',
         'hero.description': 'Vaš pouzdan partner za bezbednost i zdravlje na radnom mestu',
         'intro.text1': 'Privredno društvo "RAŠA-BONAMIVA" DOO je brzorastuća kompanija u segmentu pružanja usluga iz oblasti bezbednosti i zdravlja na radu.',
@@ -25,8 +25,10 @@ const translations = {
         'career.description': 'Trenutno tražimo motivisane i posvećene profesionalce koji dele našu strast prema bezbednosti na radu. Ako ste zainteresovani, pošaljite nam svoj CV.',
         'career.cta': 'Kontaktirajte nas',
         'contact.title': 'Kontakt',
+        'contact.company.title': 'Kompanija',
+        'contact.company.full': 'SISTEM-BZR DOO Smederevo',
         'contact.address.title': 'Adresa',
-        'contact.address.text': 'Ulica i broj, Grad, Srbija',
+        'contact.address.text': 'Durmitorska 3, 11300 Smederevo, Srbija',
         'contact.phone.title': 'Telefon',
         'contact.email.title': 'Email',
         'form.name': 'Ime',
@@ -41,7 +43,7 @@ const translations = {
         'news.item2.text': 'Organizujemo nove programe obuke za poboljšanje bezbednosti na radnom mestu.',
         'news.item3.title': 'Partnerstvo sa vodećim kompanijama',
         'news.item3.text': 'Radimo sa vodećim kompanijama na implementaciji najboljih praksi bezbednosti.',
-        'footer.text': '© 2024 RB Team. Sva prava zadržana.'
+        'footer.text': '© 2024 SISTEM-BZR DOO Smederevo. Sva prava zadržana.'
     },
     en: {
         'nav.home': 'Home',
@@ -49,7 +51,7 @@ const translations = {
         'nav.career': 'Career',
         'nav.contact': 'Contact',
         'nav.news': 'News',
-        'hero.title': 'RB Team',
+        'hero.title': 'SISTEM-BZR',
         'hero.subtitle': 'Occupational Safety and Health',
         'hero.description': 'Your trusted partner for workplace safety and health',
         'intro.text1': 'Private company "RAŠA-BONAMIVA" LLC is a rapidly growing company in the segment of providing services in the field of occupational safety and health.',
@@ -68,8 +70,10 @@ const translations = {
         'career.description': 'We are currently looking for motivated and dedicated professionals who share our passion for workplace safety. If you are interested, please send us your CV.',
         'career.cta': 'Contact Us',
         'contact.title': 'Contact',
+        'contact.company.title': 'Company',
+        'contact.company.full': 'SISTEM-BZR LLC Smederevo',
         'contact.address.title': 'Address',
-        'contact.address.text': 'Street and number, City, Serbia',
+        'contact.address.text': 'Durmitorska 3, 11300 Smederevo, Serbia',
         'contact.phone.title': 'Phone',
         'contact.email.title': 'Email',
         'form.name': 'Name',
@@ -84,7 +88,7 @@ const translations = {
         'news.item2.text': 'We are organizing new training programs to improve workplace safety.',
         'news.item3.title': 'Partnership with leading companies',
         'news.item3.text': 'We work with leading companies to implement best safety practices.',
-        'footer.text': '© 2024 RB Team. All rights reserved.'
+        'footer.text': '© 2024 SISTEM-BZR LLC Smederevo. All rights reserved.'
     }
 };
 

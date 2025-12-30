@@ -1,6 +1,6 @@
-# RB Team - Sajt za bezbednost i zdravlje na radu
+# SISTEM-BZR - Sajt za bezbednost i zdravlje na radu
 
-Sajt za kompaniju RB Team koja se bavi bezbednošću i zdravljem na radu.
+Sajt za kompaniju SISTEM-BZR DOO Smederevo koja se bavi bezbednošću i zdravljem na radu.
 
 ## Struktura projekta
 
