@@ -119,6 +119,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup contact form
     setupContactForm();
     
+    // Initialize neural network
+    initNeuralNetwork();
+    
     // Update HTML lang attribute
     document.documentElement.lang = currentLang;
 });
@@ -269,4 +272,203 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+
+// Neural Network Visualization
+function initNeuralNetwork() {
+    const canvas = document.getElementById('neuralNetwork');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const nodes = [];
+    const connections = [];
+    const nodeCount = 280;
+    const connectionDistance = 180;
+    const mouseRepelRadius = 180;
+    const mouseRepelStrength = 8;
+    
+    let mouseX = -1000;
+    let mouseY = -1000;
+    
+    // Set canvas size
+    function resizeCanvas() {
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            const rect = hero.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        }
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Track mouse position
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+    });
+    
+    canvas.addEventListener('mouseleave', () => {
+        mouseX = -1000;
+        mouseY = -1000;
+    });
+    
+    // Create nodes - distributed across entire canvas
+    function createNodes() {
+        nodes.length = 0;
+        for (let i = 0; i < nodeCount; i++) {
+            nodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2.5 + 1.2,
+                baseX: Math.random() * canvas.width,
+                baseY: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.25,
+                vy: (Math.random() - 0.5) * 0.25,
+                targetX: 0,
+                targetY: 0,
+                noiseX: Math.random() * Math.PI * 2,
+                noiseY: Math.random() * Math.PI * 2
+            });
+        }
+    }
+    
+    // Create connections between nearby nodes
+    function createConnections() {
+        connections.length = 0;
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const dx = nodes[i].x - nodes[j].x;
+                const dy = nodes[i].y - nodes[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < connectionDistance) {
+                    connections.push({
+                        node1: i,
+                        node2: j,
+                        distance: distance
+                    });
+                }
+            }
+        }
+    }
+    
+    // Draw neural network
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connections
+        ctx.lineWidth = 1;
+        
+        connections.forEach(conn => {
+            const node1 = nodes[conn.node1];
+            const node2 = nodes[conn.node2];
+            const opacity = 1 - (conn.distance / connectionDistance);
+            
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.45})`;
+            ctx.beginPath();
+            ctx.moveTo(node1.x, node1.y);
+            ctx.lineTo(node2.x, node2.y);
+            ctx.stroke();
+        });
+        
+        // Draw nodes
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        nodes.forEach(node => {
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+            ctx.fill();
+        });
+    }
+    
+    // Animate nodes with mouse repulsion
+    let time = 0;
+    function animate() {
+        time += 0.01;
+        
+        nodes.forEach((node, index) => {
+            // Add subtle noise for "living" effect
+            node.noiseX += 0.02;
+            node.noiseY += 0.02;
+            const noiseOffsetX = Math.sin(node.noiseX) * 0.5;
+            const noiseOffsetY = Math.cos(node.noiseY) * 0.5;
+            
+            // Calculate distance from mouse
+            const dx = node.x - mouseX;
+            const dy = node.y - mouseY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // Apply repulsion force from mouse - stronger and more dynamic
+            if (distance < mouseRepelRadius && distance > 0) {
+                const force = Math.pow((mouseRepelRadius - distance) / mouseRepelRadius, 1.5);
+                const angle = Math.atan2(dy, dx);
+                const repelForce = force * mouseRepelStrength;
+                
+                // Stronger repulsion near mouse
+                node.vx += Math.cos(angle) * repelForce * 0.3;
+                node.vy += Math.sin(angle) * repelForce * 0.3;
+                
+                // Add ripple effect - nodes push other nodes
+                nodes.forEach(otherNode => {
+                    if (otherNode !== node) {
+                        const otherDx = otherNode.x - node.x;
+                        const otherDy = otherNode.y - node.y;
+                        const otherDist = Math.sqrt(otherDx * otherDx + otherDy * otherDy);
+                        
+                        if (otherDist < 50 && otherDist > 0) {
+                            const pushForce = (50 - otherDist) / 50 * 0.5;
+                            const pushAngle = Math.atan2(otherDy, otherDx);
+                            otherNode.vx += Math.cos(pushAngle) * pushForce * force;
+                            otherNode.vy += Math.sin(pushAngle) * pushForce * force;
+                        }
+                    }
+                });
+            }
+            
+            // Add continuous subtle movement (living effect)
+            node.vx += noiseOffsetX * 0.05;
+            node.vy += noiseOffsetY * 0.05;
+            
+            // Apply velocity with less damping for more movement
+            node.x += node.vx;
+            node.y += node.vy;
+            node.vx *= 0.97;
+            node.vy *= 0.97;
+            
+            // Gentle return to base position
+            const baseDx = node.baseX - node.x;
+            const baseDy = node.baseY - node.y;
+            node.vx += baseDx * 0.008;
+            node.vy += baseDy * 0.008;
+            
+            // Keep nodes in bounds with soft boundaries
+            if (node.x < 0) {
+                node.x = 0;
+                node.vx *= -0.6;
+            }
+            if (node.x > canvas.width) {
+                node.x = canvas.width;
+                node.vx *= -0.6;
+            }
+            if (node.y < 0) {
+                node.y = 0;
+                node.vy *= -0.6;
+            }
+            if (node.y > canvas.height) {
+                node.y = canvas.height;
+                node.vy *= -0.6;
+            }
+        });
+        
+        createConnections();
+        draw();
+        requestAnimationFrame(animate);
+    }
+    
+    createNodes();
+    createConnections();
+    draw();
+    animate();
+}
 
